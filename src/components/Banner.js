@@ -17,7 +17,7 @@ const Banner = () => {
             interval={3000}
         >
             {imgs.map((img) => (
-                <div>
+                <div key={img}>
                     <img loading='lazy' alt='' src={img} />
                 </div>
             ))}
