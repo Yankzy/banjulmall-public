@@ -1,3 +1,40 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+	.menu-t {
+		@apply cursor-pointer border-2 border-[#131921] rounded-md p-2;
+		transition: border-color 0.2s;
+	}
+	.menu-b {
+		@apply cursor-pointer border-2 border-[#232F3E] rounded-md p-2;
+		transition: border-color 0.2s;
+	}
+
+	.menu-t:hover,
+	.menu-b:hover {
+		border-color: white;
+	}
+
+	.card {
+		@apply relative bg-white shadow-lg rounded-md p-10 z-30 m-5;
+	}
+	.category-text {
+		@apply absolute top-2 right-2 text-xs italic text-gray-400;
+	}
+
+	.button {
+		@apply bg-gradient-to-b from-yellow-200 to-yellow-400 border 
+    border-yellow-300 rounded-sm p-2 text-sm w-full
+    focus:outline-none focus:ring-2 focus:ring-yellow-400 active:from-yellow-500;
+	}
+
+	.feed-grid {
+		@apply grid grid-flow-row-dense grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-center md:-mt-56;
+	}
+
+	.image-container {
+		@apply flex justify-center w-full;
+	}
+}
