@@ -33,6 +33,7 @@ const ProductFeed = ({ products }) => {
           category={category}
           image={image} 
         />
+        
       ))}
     </div>
       {products.slice(5, products.length).map(({id, title, prrice, description, category, image}) => (
