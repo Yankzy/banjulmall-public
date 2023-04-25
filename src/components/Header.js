@@ -2,18 +2,17 @@ import { useState, useEffect } from 'react';
 import MobileHeader from './MobileHeader';
 import DesktopHeader from './DesktopHeader';
 
-const Header = () =>{
+const Header = () => {
+  const [isMobile, setIsMobile] = useState(false);
 
-  return (
-    <>
-      <div className="hidden md:block">
-        <DesktopHeader />
-      </div>
-      <div className="block md:hidden">
-        <MobileHeader />
-      </div>
-    </>
-  );
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return isMobile ? <MobileHeader /> : <DesktopHeader />;
 };
 
 export default Header;
