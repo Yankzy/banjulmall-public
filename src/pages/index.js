@@ -16,7 +16,7 @@ export default function Home({ products }) {
         <div className="flex flex-col">
           <Header />
 
-          <main className='mx-auto'>
+          <main className='mx-auto pt-24 md:pt-28 lg:pt-32 xl:pt-36'>
             <Banner />
             <ProductFeed products={products} />
           </main>
