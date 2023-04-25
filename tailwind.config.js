@@ -1,12 +1,13 @@
 module.exports = {
   mode: "jit",
-  purge: [
+  content: [
     "./src/pages/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode: false, // or 'media' or 'class'
+  media: false, // or 'media' or 'class'
   theme: {
     extend: {
+      transform: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
       colors: {
         amazon_blue: {
           light: "#232F3E",
@@ -18,7 +19,7 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [require("@tailwindcss/line-clamp")],
+  plugins: [],
 };
 
 

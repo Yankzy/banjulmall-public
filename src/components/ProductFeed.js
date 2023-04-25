@@ -22,7 +22,7 @@ const ProductFeed = ({ products }) => {
       alt="middle banner" 
     />
 
-    <div className="md:col-span-2">
+    <div className="">
       {products.slice(4, 5).map(({id, title, prrice, description, category, image}) => (
         <Product
           key={id}

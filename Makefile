@@ -20,10 +20,7 @@ proj:
 	django-admin startproject config . && $(PY) && python manage.py startapp coaching
 
 run:
-	$(PY) runserver 8001 
-
-http:
-	ngrok http 8001
+	$(PY) runserver 8001
 
 dev:
 	yarn run dev
