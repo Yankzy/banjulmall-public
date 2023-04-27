@@ -62,7 +62,7 @@ const DesktopHeader = () => {
                         All
                     </p>
                     {menuB.map((item, index) => (
-                        <p key={index} className={`menu-b whitespace-nowrap ${index < 6 ? 'hidden lg:block' : ''}`}>{item}</p>
+                        <p key={index} className={`menu-b whitespace-nowrap`}>{item}</p>
                     ))}
                 </div>
             </header>
