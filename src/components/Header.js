@@ -12,9 +12,8 @@ const Header = () =>{
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  return (
-      isMobile ? <MobileHeader /> : <DesktopHeader />
-  );
+  return <MobileHeader /> 
+  // return isMobile ? <MobileHeader /> : <DesktopHeader />
 }
 
 export default Header;

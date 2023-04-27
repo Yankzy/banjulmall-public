@@ -79,13 +79,3 @@
 		@apply left-64 w-full h-full bg-black bg-opacity-90 z-40;
 	}
 }
-
-.main-padding {
-	padding-top: calc(100% * 0.44); /* Adjust the value for mobile screens */
-}
-
-@media (min-width: 640px) {
-	.main-padding {
-		padding-top: calc(100% * 0.08); /* Adjust the value for larger screens */
-	}
-}

@@ -16,7 +16,7 @@ const DesktopHeader = () => {
 
     return (
         <>
-            <header className={`fixed top-0 left-0 w-full z-40`}>
+            <header id='desktopheader' className={`w-full z-40`}>
                 {/* Top nav */}
                 <div className='flex flex-row items-center bg-amazon_blue flex-grow py-1 gap-2 pl-6'>
                     <div className='flex items-center flex-grow-0 menu-t'>

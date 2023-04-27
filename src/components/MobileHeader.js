@@ -13,7 +13,7 @@ const MobileHeader = () => {
     const dispatch = useDispatch();
     return (
         <>
-            <header className={`fixed top-0 left-0 w-full z-40`}>
+            <header id='mobileheader' className={`w-full z-40`}>
                 {/* Top nav */}
                 <div className='bg-amazon_blue py-2 text-white'>
                     {/* Left */}
