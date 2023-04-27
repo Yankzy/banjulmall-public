@@ -5,7 +5,7 @@ import RightSidebar from './RightSidebar';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleLeftSidebar, toggleRighttSidebar } from '../redux/sidebarSlice';
 
-const Header = () => {
+const DesktopHeader = () => {
 
     const menuB = ['Deals', 'Buy Again', 'Become A Seller', 'Customer Service', 'BM Business', 'Browse History']
     const userName = 'Yankuba Kuyateh'
@@ -16,7 +16,7 @@ const Header = () => {
 
     return (
         <>
-            <header className={`w-full z-40`}>
+            <header className={`fixed top-0 left-0 w-full z-40`}>
                 {/* Top nav */}
                 <div className='flex flex-row items-center bg-amazon_blue flex-grow py-1 gap-2 pl-6'>
                     <div className='flex items-center flex-grow-0 menu-t'>
@@ -109,4 +109,4 @@ const Header = () => {
     )
 }
 
-export default Header;
+export default DesktopHeader;

@@ -6,7 +6,7 @@ const Banner = () => {
     const imgs = ["/1.jpg", "/2.jpg", "/3.jpg"]
 
   return (
-    <div className='relative z-10'>
+    <div className='relative'>
         <div className='absolute w-full h-30 bg-gradient-to-t from-gray-100 to-transparent bottom-0 z-20'/>
         <Carousel
             autoPlay

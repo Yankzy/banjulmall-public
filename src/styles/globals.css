@@ -26,8 +26,8 @@
 
 	.button {
 		@apply bg-gradient-to-b from-yellow-200 to-yellow-400 border 
-    border-yellow-300 rounded-sm p-2 text-sm w-full
-    focus:outline-none focus:ring-2 focus:ring-yellow-400 active:from-yellow-500;
+    	border-yellow-300 rounded-sm p-2 text-sm w-full
+    	focus:outline-none focus:ring-2 focus:ring-yellow-400 active:from-yellow-500;
 	}
 
 	.feed-grid {
@@ -77,5 +77,15 @@
 
 	.overlay-right-of-sidebar {
 		@apply left-64 w-full h-full bg-black bg-opacity-90 z-40;
+	}
+}
+
+.main-padding {
+	padding-top: calc(100% * 0.44); /* Adjust the value for mobile screens */
+}
+
+@media (min-width: 640px) {
+	.main-padding {
+		padding-top: calc(100% * 0.08); /* Adjust the value for larger screens */
 	}
 }

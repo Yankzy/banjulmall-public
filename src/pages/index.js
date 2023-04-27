@@ -12,15 +12,11 @@ export default function Home({ products }) {
         <Head>
           <title>Home | Banjul Mall</title>
         </Head>
-        
-        <div className="flex flex-col">
-          <Header />
-
-          <main className='mx-auto pt-24 md:pt-28 lg:pt-32 xl:pt-36'>
-            <Banner />
-            <ProductFeed products={products} />
-          </main>
-        </div>
+        <Header />
+        <main className="main-padding">
+          <Banner />
+          <ProductFeed products={products} />
+        </main>
       </div>
     </>
   );

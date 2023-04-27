@@ -3,17 +3,18 @@ import MobileHeader from './MobileHeader';
 import DesktopHeader from './DesktopHeader';
 
 const Header = () =>{
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
-    <>
-      <div className="hidden md:block">
-        <DesktopHeader />
-      </div>
-      <div className="block md:hidden">
-        <MobileHeader />
-      </div>
-    </>
+      isMobile ? <MobileHeader /> : <DesktopHeader />
   );
-};
+}
 
 export default Header;
