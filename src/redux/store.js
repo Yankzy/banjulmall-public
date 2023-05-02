@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
-import overlayReducer from './overlaySlice';
-import sidebarReducer from './sidebarSlice';
+import userReducer from './userSlice';
+import modalSlice from './modalSlice';
+import cartSlice from './cartSlice';
 
 
 const store = configureStore({
   reducer: {
-    overlay: overlayReducer,
-    sidebar: sidebarReducer,
+    user: userReducer,
+    modal: modalSlice,
+    cart: cartSlice,
   },
 });
 

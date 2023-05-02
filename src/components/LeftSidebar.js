@@ -1,6 +1,6 @@
 
-import { ChevronRightIcon, ChevronDownIcon } from '@heroicons/react/outline';
 import { useState } from 'react';
+import { TfiAngleDown, TfiAngleRight } from 'react-icons/tfi';
 
 
 
@@ -36,9 +36,9 @@ const LeftSidebar = () => {
                     >
                         {category.title}
                         {activeCategoryIndex === index ? (
-                        <ChevronDownIcon className="text-xl h-4" />
+                        <TfiAngleDown className="text-xl h-4" />
                         ) : (
-                        <ChevronRightIcon className="text-xl h-4" />
+                        <TfiAngleRight className="text-xl h-4" />
                         )}
                     </button>
                     {activeCategoryIndex === index && (

@@ -1,11 +1,16 @@
 import { Provider } from 'react-redux'
 import store from '../redux/store'
 import '../styles/globals.css'
+import { FirebaseProvider } from '../../firebase/Config'
+import Spinner from '../components/Spinner'
+
 
 const MyApp = ({ Component, pageProps }) => {
   return (
     <Provider store={store}>
-      <Component {...pageProps} />
+      <FirebaseProvider>
+        <Component {...pageProps} />
+      </FirebaseProvider>
     </Provider>
   )
 }

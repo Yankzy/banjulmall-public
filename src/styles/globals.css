@@ -47,7 +47,7 @@
 	}
 
 	.cart-sum {
-		@apply absolute top-0 right-0 h-4 w-4 bg-yellow-400 text-center rounded-full text-black font-bold;
+		@apply absolute top-0 right-3 h-4 w-4 bg-yellow-400 text-center rounded-full text-black font-bold;
 	}
 
 	.hide-scrollbar::-webkit-scrollbar {
