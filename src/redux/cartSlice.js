@@ -10,8 +10,16 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem: (state, action) => {
-        const cart = [...state.items, action.payload]; 
-        state.items = cart;
+      let cart;
+        const itemIndex = state.items.findIndex(item => item.id === action.payload.id);
+        if (itemIndex === -1) {
+          cart = [...state.items, action.payload];
+          state.items = cart;
+        }else{
+          cart = [...state.items];
+          cart[itemIndex].quantity = action.payload.quantity;
+          state.items = cart;
+        }
         localStorage.setItem('cart', JSON.stringify(cart));
     },
     removeItem: (state, action) => {
@@ -37,17 +45,6 @@ const cartSlice = createSlice({
       state.selected = newSelected
       localStorage.setItem('selected', JSON.stringify(newSelected));
     },
-    adjustQuantity: (state, action) => {
-      const { id, quantity } = action.payload;
-      const index = state.items.findIndex(item => item.id === id);
-      if (index !== -1) {
-        const updatedItem = { ...state.items[index], quantity };
-        const updatedCart = [...state.items];
-        updatedCart.splice(index, 1, updatedItem);
-        state.items = updatedCart;
-        localStorage.setItem('cart', JSON.stringify(updatedCart));
-      }
-    }
   
 
 

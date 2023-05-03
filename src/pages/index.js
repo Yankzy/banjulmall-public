@@ -2,14 +2,9 @@ import Head from "next/head";
 import Banner from "../components/Banner";
 import ProductFeed from "../components/ProductFeed";
 import Header from '../components/Header';
-import { useDispatch } from "react-redux";
-import { toggleOverlay } from "../redux/modalSlice";
 
 
-
-export default function Home({products}) {
-
-  const dispatch = useDispatch();
+export default function Home() {
 
   return (
       <div className="bg-gray-100">
@@ -19,18 +14,15 @@ export default function Home({products}) {
         <main>
           <Header />
           <Banner />  
-          <ProductFeed products={products} />
+          <ProductFeed />
         </main>
       </div>
   );
 }
 
-export async function getServerSideProps(context) {
-  const products = await fetch('https://fakestoreapi.com/products')
-  .then((res) => res.json())
-  .catch((err) => console.log(err));
+// export async function getServerSideProps(context) {
   
-  return {
-    props: {products}, // will be passed to the page component as props
-  }
-}
+//   return {
+//     props: {products}, // will be passed to the page component as props
+//   }
+// }

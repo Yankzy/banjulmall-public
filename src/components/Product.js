@@ -1,18 +1,13 @@
 import Image from 'next/image';
 import { TfiStar } from 'react-icons/tfi';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addItem } from '../redux/cartSlice';
-import crypto from 'crypto';
 
-const Product = ({ title, description, category, image }) => {
-    const rating = Math.floor(Math.random() * 5) + 1;
+const Product = (props) => {
+    const {id, title, price, description, category, image, rating} = props
+    const {rate, count} = rating;
     const prime = Math.random() < 0.5;
-    const items = useSelector(({cart}) => cart.items);
     const dispatch = useDispatch();
-
-    const uniqueStr = () => {
-        return `${crypto.randomBytes(20).toString('hex')}`;
-    }
 
     return (
         <div className='card flex flex-col'>
@@ -29,12 +24,12 @@ const Product = ({ title, description, category, image }) => {
                 </div>
                 <h4 className='my-3'>{title}</h4>
                 <div className='flex'>
-                    {Array(rating).fill().map((_, i) => (
+                    {Array(rate).fill().map((_, i) => (
                         <TfiStar key={i} className='h-5 text-yellow-500' />
                     ))}
                 </div>
                 <p className='text-xs my-2 line-clamp-2'>{description}</p>
-                <p className='mb-5'>$45</p>
+                <p className='mb-5'>${price}</p>
                 {prime && (
                     <div className='flex items-center space-x-2 -mt-5'>
                         <img className='w-12' src='/prime.png' alt="" />
@@ -44,7 +39,7 @@ const Product = ({ title, description, category, image }) => {
             </div>
             <button 
                 className='button'
-                onClick={() => dispatch(addItem({title, description, category, image, price: 45, id: uniqueStr()}))}
+                onClick={() => dispatch(addItem({title, description, category, image, price, id, quantity: 1}))}
             >
                 Add to cart
             </button>

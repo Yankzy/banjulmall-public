@@ -1,17 +1,19 @@
+import { products } from "../data"
 import Product from "./Product"
 
-const ProductFeed = ({ products }) => {
+const ProductFeed = () => {
   return (
     <div className='feed-grid'>
-      {products.slice(0, 4).map(({id, title, prrice, description, category, image}) => (
-          <Product
+      {products.slice(0, 4).map(({id, title, price, description, category, image, rating}) => (
+        <Product
           key={id}
           id={id}
           title={title}
-          prrice={prrice}
+          price={price}
           description={description}
           category={category}
           image={image} 
+          rating={rating}
         />
       ))}
 
@@ -23,28 +25,30 @@ const ProductFeed = ({ products }) => {
     />
 
     <div className="">
-      {products.slice(4, 5).map(({id, title, prrice, description, category, image}) => (
+      {products.slice(4, 5).map(({id, title, price, description, category, image, rating}) => (
         <Product
           key={id}
           id={id}
           title={title}
-          prrice={prrice}
+          price={price}
           description={description}
           category={category}
           image={image} 
+          rating={rating}
         />
         
       ))}
     </div>
-      {products.slice(5, products.length).map(({id, title, prrice, description, category, image}) => (
+      {products.slice(5, products.length).map(({id, title, price, description, category, image, rating}) => (
         <Product
           key={id}
           id={id}
           title={title}
-          prrice={prrice}
+          price={price}
           description={description}
           category={category}
           image={image} 
+          rating={rating}
         />
       ))}
     </div>
