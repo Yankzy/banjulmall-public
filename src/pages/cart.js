@@ -58,63 +58,74 @@ function CartPage() {
             <p className='mr-2'>Price</p>
           </div>
           <hr />
-
-          <Formik initialValues={initialValues} onSubmit={onSubmit}>
-            {({ values }) => (
-              <Form>
-                <div className='flex flex-col p-5'>
-                    {items?.map((item, i) => (
-                    <>
-                      <div key={i} className='flex flex-row my-3 w-full justify-between'>
-                        <div className='flex items-center'>
-                          {/* <Field type="checkbox" name={`selected.${item.id}`} className="mr-2" /> */}
-                          <Image
-                            src={item.image}
-                            alt={item.title}
-                            width={70}
-                            height={70}
-                            className='w-auto'
-                          />
-                          <div className='ml-2 min-h-[90%]'>
-                            <h1 className='text-lg font-medium'>{item.title}</h1>
-                            <p className='text-xs text-green-600 my-3'>In Stock</p>
-                            <Field as="select" name={`quantity.${item.id}`} 
-                              className="border border-gray-300 rounded-md mr-3 text-xs bg-gray-200 p-1 shadow-md"
-                              onChange={e => dispatch(addItem({id: item.id, quantity: Number(e.target.value)} ))}
-                              value={item.quantity}
-                            >
-                              {Array.from({ length: 10 }, (_, i) => (
-                                <option key={`${item.id}-${i}`} value={i + 1}> Qty: {i + 1}</option>
-                              ))}
-                            </Field>
-                            
-                            <button 
-                              className="text-[#3c8f9f] text-sm hover:underline"
-                              onClick={() => dispatch(removeItem(item.id))}
-                            >
-                              Delete
-                            </button>
-                            <span className='mx-2 text-gray-200'>|</span>
-                            <button className="text-[#3c8f9f] text-sm hover:underline">Save for later</button>
-                            
+          {items.length ? (
+            <Formik initialValues={initialValues} onSubmit={onSubmit}>
+              {({ values }) => (
+                <Form>
+                  <div className='flex flex-col p-5'>
+                      {items?.map((item, i) => (
+                      <>
+                        <div key={i} className='flex flex-row my-3 w-full justify-between'>
+                          <div className='flex items-center'>
+                            {/* <Field type="checkbox" name={`selected.${item.id}`} className="mr-2" /> */}
+                            <Image
+                              src={item.image}
+                              alt={item.title}
+                              width={70}
+                              height={70}
+                              className='w-auto'
+                            />
+                            <div className='ml-2 min-h-[90%]'>
+                              <h1 className='text-lg font-medium'>{item.title}</h1>
+                              <p className='text-xs text-green-600 my-3'>In Stock</p>
+                              <Field as="select" name={`quantity.${item.id}`} 
+                                className="border border-gray-300 rounded-md mr-3 text-xs bg-gray-200 p-1 shadow-md"
+                                onChange={e => dispatch(addItem({id: item.id, quantity: Number(e.target.value)} ))}
+                                value={item.quantity}
+                              >
+                                {Array.from({ length: 10 }, (_, i) => (
+                                  <option key={`${item.id}-${i}`} value={i + 1}> Qty: {i + 1}</option>
+                                ))}
+                              </Field>
+                              
+                              <button 
+                                className="text-[#3c8f9f] text-sm hover:underline"
+                                onClick={() => dispatch(removeItem(item.id))}
+                              >
+                                Delete
+                              </button>
+                              <span className='mx-2 text-gray-200'>|</span>
+                              <button className="text-[#3c8f9f] text-sm hover:underline">Save for later</button>
+                              
+                            </div>
+                          </div>
+                          <div className="flex items-start">
+                            <p className='text-xl font-extrabold top-0'>{item.price}</p>
                           </div>
                         </div>
-                        <div className="flex items-start">
-                          <p className='text-xl font-extrabold top-0'>{item.price}</p>
-                        </div>
-                      </div>
-                      <hr />
-                    </>
-                    ))}
+                        <hr />
+                      </>
+                      ))}
 
-                  <div className='flex text-xl items-center justify-end my-5'>
-                    <p >{`Subtotal (${cartTotals['totalQty']} items):`}</p>
-                    <p className='text-xl font-bold ml-3'>{`  $${cartTotals['totalPrice']}`}</p>
+                    <div className='flex text-xl items-center justify-end my-5'>
+                      <p >{`Subtotal (${cartTotals['totalQty']} items):`}</p>
+                      <p className='text-xl font-bold ml-3'>{`  $${(cartTotals['totalPrice']).toFixed(2)}`}</p>
+                    </div>
                   </div>
-                </div>
-              </Form>
-            )}
-          </Formik>
+                </Form>
+              )}
+            </Formik>
+          ) : (
+            <div className='flex flex-col items-center justify-center h-full'>
+              <p className='text-xl'>Your cart is empty</p>
+              <button 
+                className='bg-yellow-500 text-white font-semibold px-6 py-2 rounded-md mt-5'
+                onClick={() => router.push('/')}
+              >
+                Continue shopping
+              </button>
+            </div>
+          )}
 
         </div>
         <div className='relative w-[25%] ml-3'>
@@ -122,7 +133,7 @@ function CartPage() {
             <div className='flex flex-col'>
               <div className='flex flex-row'>
                 <p className='text-xl mb-5'>Subtotal ({cartTotals['totalQty']} items): </p>
-                <p className='text-xl font-bold ml-3'>{`$${cartTotals['totalPrice']}`}</p>
+                <p className='text-xl font-bold ml-3'>{`$${(cartTotals['totalPrice']).toFixed(2)}`}</p>
               </div>
               <button className=' bg-yellow-500 text-white font-semibold px-6 py-2 rounded-md'>
                 Continue to checkout
