@@ -2,12 +2,17 @@ import Image from 'next/image';
 import { TfiStar } from 'react-icons/tfi';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItem } from '../redux/cartSlice';
+import crypto from 'crypto';
 
 const Product = ({ title, description, category, image }) => {
     const rating = Math.floor(Math.random() * 5) + 1;
     const prime = Math.random() < 0.5;
     const items = useSelector(({cart}) => cart.items);
     const dispatch = useDispatch();
+
+    const uniqueStr = () => {
+        return `${crypto.randomBytes(20).toString('hex')}`;
+    }
 
     return (
         <div className='card flex flex-col'>
@@ -39,7 +44,7 @@ const Product = ({ title, description, category, image }) => {
             </div>
             <button 
                 className='button'
-                onClick={() => dispatch(addItem({title, description, category, image, price: 45}))}
+                onClick={() => dispatch(addItem({title, description, category, image, price: 45, id: uniqueStr()}))}
             >
                 Add to cart
             </button>

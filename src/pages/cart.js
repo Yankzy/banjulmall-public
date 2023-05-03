@@ -4,9 +4,8 @@ import Header from '../components/Header';
 import { useDispatch, useSelector } from 'react-redux';
 import Image from 'next/image';
 import { Form, Formik, Field } from 'formik';
-import InputField from '../components/Fields';
-import { v4 as uuid } from "uuid";
-import crypto from 'crypto';
+import { removeItem } from '../redux/cartSlice';
+
 
 function CartPage() {
   const router = useRouter();
@@ -32,6 +31,7 @@ function CartPage() {
     return acc;
   }, {});
 
+
   return (
     <>
       <Head>
@@ -39,7 +39,7 @@ function CartPage() {
       </Head>
       <Header />
       <div className='relative h-full w-full p-3 bg-gray-100'>
-        <div className='relative h-full w-[75%] px-2 bg-white'>
+        <div className='relative h-full w-[75%] bg-white p-10 rounded-sm'>
           <h1 className='text-2xl'>Shopping Cart</h1>
           <div className='flex justify-between'>
             <p>Deselect all items</p>
@@ -50,7 +50,7 @@ function CartPage() {
           <Formik initialValues={initialValues} onSubmit={onSubmit}>
             {({ values }) => (
               <Form>
-                <div className='flex flex-col'>
+                <div className='flex flex-col p-5'>
                     {items?.map((item, i) => (
                     <>
                       <div key={i} className='flex flex-row my-3 w-full justify-between'>
@@ -59,30 +59,40 @@ function CartPage() {
                           <Image
                             src={item.image}
                             alt={item.title}
-                            width={100}
-                            height={100}
+                            width={70}
+                            height={70}
                             className='w-auto'
                           />
-                          <div className='ml-2'>
+                          <div className='ml-2 min-h-[90%]'>
                             <h1 className='text-lg font-medium'>{item.title}</h1>
-                            <button className="text-blue-500 text-sm hover:underline">Delete</button>
-                            <button className="text-blue-500 text-sm hover:underline ml-3">Save for later</button>
+                            <p className='text-xs text-green-600 my-3'>In Stock</p>
+                            <Field as="select" name={`quantity.${item.id}`} 
+                              className="border border-gray-300 rounded-md mr-3 text-xs bg-gray-200 p-1 shadow-md"
+                            >
+                              {Array.from({ length: 5 }, (_, i) => (
+                                <option key={`${item.id}-${i}`} value={i + 1}>Qty: {i + 1}</option>
+                              ))}
+                            </Field>
+                            <button 
+                              className="text-[#3c8f9f] text-sm hover:underline"
+                              onClick={() => dispatch(removeItem(item.id))}
+                            >
+                              Delete
+                            </button>
+                            <span className='mx-2 text-gray-200'>|</span>
+                            <button className="text-[#3c8f9f] text-sm hover:underline">Save for later</button>
+                            
                           </div>
                         </div>
-                        <div className="flex items-center">
-                          <Field as="select" name={`quantity.${item.id}`} className="border border-gray-300 rounded-md mr-3">
-                            {Array.from({ length: item.stock }, (_, i) => (
-                              <option key={i} value={i + 1}>{i + 1}</option>
-                            ))}
-                          </Field>
-                          <p className='text-xl font-extrabold my-auto'>{item.price}</p>
+                        <div className="flex items-start">
+                          <p className='text-xl font-extrabold top-0'>{item.price}</p>
                         </div>
                       </div>
                       <hr />
                     </>
                     ))}
 
-                  <div>
+                  <div className='flex items-center justify-end my-5'>
                     <p>{`Subtotal (${items?.length} items): ${totalPrice}`}</p>
                   </div>
                 </div>
