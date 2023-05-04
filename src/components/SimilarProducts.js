@@ -28,7 +28,7 @@ const SimilarProducts = () => {
                             <TfiStar key={i} className='h-5 text-yellow-500' />
                         ))}
                     </div>
-                    <p className='text-xs top-0 text-green-900'>${price}</p>
+                    <p className='text-sm px-2 top-0 text-[#3c8f9f]'>${price}</p>
                     
                     <button 
                         className='h-auto w-auto bg-gray-300 p-1 rounded-lg text-sm'

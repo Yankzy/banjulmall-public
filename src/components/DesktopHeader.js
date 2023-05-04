@@ -70,11 +70,12 @@ const DesktopHeader = () => {
                             <p>Returns</p>
                             <p className='font-extrabold'>& Orders</p>
                         </div>
-
                         <div className='menu-t relative flex items-center' onClick={()=>router.push('/cart')}>
-                            <span className='absolute top-0 right-11 h-5 w-5 bg-yellow-400 text-center rounded-full text-black font-bold justify-center'>
-                                {items?.length || 0}
-                            </span>
+                            {items?.length > 0 && (
+                                <span className='absolute top-0 right-11 h-5 w-5 bg-yellow-400 text-center rounded-full text-black font-bold justify-center'>
+                                    {items?.length}
+                                </span>
+                            )}
                             <TfiShoppingCart size={25} />
                             <p className='font-extrabold mt-2'>Cart</p>
                         </div>
