@@ -16,6 +16,7 @@ const MobileHeader = () => {
 
     const userName = currentUser?.displayName?.split(' ')[0]
     const address = "Kanifing Estate"
+    // const deliveryString = `Deliver to ${(!userName || !address) ? "Anywhere" : userName } - ${address}`
     
     const LoginOrRightSidebarToggle = () => {
         if (currentUser) {
@@ -76,7 +77,7 @@ const MobileHeader = () => {
                 </div>
                 <div className='flex flex-row bottom-menu-container bg-[#324254]'>
                     <TfiLocationPin size={20} className='h-5' />
-                    <p className='ml-0'>{`Delivery to ${userName || ''} - ${address || ''}`}</p>
+                    <p className='ml-0'>{`Delivery to Anywhere`}</p>
                 </div>
             </header>
             {(leftSidebarIsVisible || rightSidebarIsVisible ) && <OverlayComponents />}
