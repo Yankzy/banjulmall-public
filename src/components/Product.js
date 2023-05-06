@@ -3,8 +3,8 @@ import { TfiStar } from 'react-icons/tfi';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../redux/cartSlice';
 
-const Product = (props) => {
-    const {id, title, price, description, category, image, rating} = props
+const Product = ({item}) => {
+    const {id, title, price, description, category, image, rating} = item
     const {rate, count} = rating;
     const prime = Math.random() < 0.5;
     const dispatch = useDispatch();
@@ -39,7 +39,7 @@ const Product = (props) => {
             </div>
             <button 
                 className='button'
-                onClick={() => dispatch(addItem({title, description, category, image, price, id, quantity: 1}))}
+                onClick={() => dispatch(addItem({...item, quantity: 1, saveForLater: false}))}
             >
                 Add to cart
             </button>

@@ -1,8 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleLeftSidebar, toggleRightSidebar } from '../redux/modalSlice';
 import { useRouter } from 'next/router';
-import { TfiLocationPin, TfiAlignJustify, TfiSearch, TfiShoppingCart } from "react-icons/tfi";
+import { TfiLocationPin, TfiAlignJustify, TfiSearch } from "react-icons/tfi";
 import OverlayComponents from './OverlayComponents';
+import { RiShoppingBasketLine } from "react-icons/ri";
 
 const DesktopHeader = () => {
 
@@ -76,8 +77,8 @@ const DesktopHeader = () => {
                                     {items?.length}
                                 </span>
                             )}
-                            <TfiShoppingCart size={25} />
-                            <p className='font-extrabold mt-2'>Cart</p>
+                            <RiShoppingBasketLine size={25} />
+                            <p className='font-extrabold mt-2'>Basket</p>
                         </div>
                     </div>
                 </div>

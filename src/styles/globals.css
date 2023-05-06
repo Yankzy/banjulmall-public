@@ -34,6 +34,10 @@
 		@apply grid grid-flow-row-dense grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-center md:-mt-56;
 	}
 
+	.save_items_grid {
+		@apply grid grid-flow-row-dense grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-center;
+	}
+
 	.image-container {
 		@apply flex justify-center w-full;
 	}

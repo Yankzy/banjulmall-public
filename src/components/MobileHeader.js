@@ -1,10 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
-import LeftSidebar from './LeftSidebar';
 import { toggleLeftSidebar, toggleRightSidebar } from '../redux/modalSlice';
-import RightSidebar from './RightSidebar';
-import { TfiLocationPin, TfiAlignJustify, TfiSearch, TfiShoppingCart, TfiUser, TfiAngleRight } from "react-icons/tfi";
+import { TfiLocationPin, TfiAlignJustify, TfiSearch, TfiUser, TfiAngleRight } from "react-icons/tfi";
 import { useRouter } from 'next/router';
 import OverlayComponents from './OverlayComponents';
+import { RiShoppingBasketLine } from 'react-icons/ri';
 
 const MobileHeader = () => {
     
@@ -12,6 +11,7 @@ const MobileHeader = () => {
     const menuB = ['Deals', 'Buy Again', 'Become A Seller', 'Customer Service', 'BM Business', 'Browse History']
     const { leftSidebarIsVisible, rightSidebarIsVisible } = useSelector(({modal}) => modal);
     const currentUser = useSelector(({user}) => user.currentUser);
+    const items = useSelector(({cart}) => cart.items);
     const dispatch = useDispatch();
 
     const userName = currentUser?.displayName?.split(' ')[0]
@@ -24,6 +24,10 @@ const MobileHeader = () => {
             router.push('/login');
         }
     }
+
+    console.log(items);
+
+
     return (
         <>
             <header id='mobileheader' className={`w-full z-40`}>
@@ -52,8 +56,8 @@ const MobileHeader = () => {
                                 <TfiUser size={20} className='h-7' />
                             </div>
                             <div className='relative ml-4' onClick={()=>router.push('/cart')}>
-                                <span className='cart-sum'>0</span>
-                                <TfiShoppingCart size={30} className='h-7' />
+                                {(items?.length > 0) && <span className='cart-sum'>{items?.length}</span>}
+                                <RiShoppingBasketLine size={30} className='h-7' />
                             </div>
                         </div>
                     </div>

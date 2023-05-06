@@ -4,11 +4,12 @@ import Header from '../components/Header';
 import { useDispatch, useSelector } from 'react-redux';
 import Image from 'next/image';
 import { Form, Formik, Field } from 'formik';
-import { addItem, removeItem } from '../redux/cartSlice';
+import { addItem, removeItem, saveForLater } from '../redux/cartSlice';
 import styles from '../styles/cart.module.css';
 import SimilarProducts from '../components/SimilarProducts';
 import SaveItems from '../components/SaveItems';
 import { addSavedItem } from '../redux/saveItemsSlice';
+
 
 
 function CartPage() {
@@ -43,9 +44,10 @@ function CartPage() {
   );
 
   const handleSaveForLater = (item) => {
-    dispatch(addSavedItem(item));
+    dispatch(addSavedItem({...item, quantity: 1}));
     dispatch(removeItem(item.id));
   };
+
 
 
   return (
@@ -54,8 +56,8 @@ function CartPage() {
         <title>Cart | Banjul Mall</title>
       </Head>
       <Header />
-      <div className={`relative flex flex-row h-full w-full p-3 bg-gray-100 ${styles.bg_svg}`}>
-        <div className='relative h-full w-[75%]'>
+      <div className={`relative flex flex-col md:flex-row h-full w-full p-3 bg-gray-100 ${styles.bg_svg}`}>
+        <div className='relative h-full md:w-[75%]'>
           <div className='bg-white p-10 rounded-md mb-5'>
             <h1 className='text-2xl'>Shopping Cart</h1>
             <div className='flex justify-between'>
@@ -70,7 +72,7 @@ function CartPage() {
                     <div className='flex flex-col p-5'>
                         {items?.map((item, i) => (
                         <>
-                          <div key={i} className='flex flex-row my-3 w-full justify-between'>
+                          <div key={`${item.id}_${i}`} className='flex flex-row my-3 w-full justify-between'>
                             <div className='flex items-center'>
                               {/* <Field type="checkbox" name={`selected.${item.id}`} className="mr-2" /> */}
                               <Image
@@ -85,7 +87,7 @@ function CartPage() {
                                 <p className='text-xs text-green-600 my-3'>In Stock</p>
                                 <Field as="select" name={`quantity.${item.id}`} 
                                   className="border border-gray-300 rounded-md mr-3 text-xs bg-gray-200 p-1 shadow-md"
-                                  onChange={e => dispatch(addItem({id: item.id, quantity: Number(e.target.value)} ))}
+                                  onChange={e => dispatch(addItem({...item, quantity: Number(e.target.value)} ))}
                                   value={item.quantity}
                                 >
                                   {Array.from({ length: 10 }, (_, i) => (
@@ -138,9 +140,9 @@ function CartPage() {
             )}
             
           </div>
-          <SaveItems />
+          <SaveItems item={items.filter(item => item.saveForLater)} />
         </div>
-        <div className='relative w-[25%] ml-3'>
+        <div className='relative w-full md:w-[30%] mt-5 md:mt-0 md:ml-3'>
           <div className='bg-white p-10 rounded-md'>
             <div className='flex flex-col'>
               <div className='flex flex-row'>

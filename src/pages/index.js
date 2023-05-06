@@ -21,8 +21,17 @@ export default function Home() {
 }
 
 // export async function getServerSideProps(context) {
+//   // timeout for 10 seconds
+//   const timeout = 10 * 1000;
+//   const timeoutPromise = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve({
+//         props: {products: 1}, // will be passed to the page component as props
+//       })
+//     }, timeout)
+//   })
   
 //   return {
-//     props: {products}, // will be passed to the page component as props
+//     props: {products: 1}, // will be passed to the page component as props
 //   }
 // }
