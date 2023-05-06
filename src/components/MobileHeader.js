@@ -76,7 +76,7 @@ const MobileHeader = () => {
                 </div>
                 <div className='flex flex-row bottom-menu-container bg-[#324254]'>
                     <TfiLocationPin size={20} className='h-5' />
-                    <p className='ml-0'>{`Delivery to ${userName || null} - ${address || null}`}</p>
+                    <p className='ml-0'>{`Delivery to ${userName || ''} - ${address || ''}`}</p>
                 </div>
             </header>
             {(leftSidebarIsVisible || rightSidebarIsVisible ) && <OverlayComponents />}
