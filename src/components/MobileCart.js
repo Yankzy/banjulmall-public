@@ -63,18 +63,20 @@ function MobileCart() {
       </Head>
       <Header />
       <div className={`relative flex flex-col h-full w-full p-3 bg-white`}>
-        <div className='flex flex-col'>
-          <div className='flex flex-row'>
-            <p className='text-xl mb-5'>Subtotal ({cartTotals['totalQty']} items): </p>
-            <p className='text-xl font-bold ml-3'>{`$${(cartTotals['totalPrice']).toFixed(2)}`}</p>
+        {items.length > 0 && 
+          <div className='flex flex-col'>
+            <div className='flex flex-row'>
+              <p className='text-xl mb-5'>Subtotal ({cartTotals['totalQty']} items): </p>
+              <p className='text-xl font-bold ml-3'>{`$${(cartTotals['totalPrice']).toFixed(2)}`}</p>
+            </div>
+            <button 
+              className={`bg-${cartTotals['totalQty'] === 0 ? 'gray-400' : 'yellow-500'} text-white font-semibold px-6 py-2 rounded-md bg-gr`}
+              disabled={cartTotals['totalQty'] === 0}
+            >
+              Continue to checkout
+            </button>
           </div>
-          <button 
-            className={`bg-${cartTotals['totalQty'] === 0 ? 'gray-400' : 'yellow-500'} text-white font-semibold px-6 py-2 rounded-md bg-gr`}
-            disabled={cartTotals['totalQty'] === 0}
-          >
-            Continue to checkout
-          </button>
-        </div>
+        }
         <hr className=' my-5' />
         {items.length ? (
           <Formik initialValues={{}} onSubmit={onSubmit}>
