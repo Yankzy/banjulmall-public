@@ -29,37 +29,40 @@ function SaveItems() {
 
   
   return (
-    <div className='save_items_grid'>
-      {items?.map(item => (
-        <div key={item.id} className='card flex flex-col'>
-            <div className='flex-grow overflow-y-auto min-h-[400px]'>
-                <p className='category-text'>{item.category}</p>
-                <div className='flex justify-center w-full'>
-                    <Image
-                        src={item.image}
-                        alt="product-image"
-                        width={70}
-                        height={70}
-                        className='cursor-pointer w-auto'
-                    />
-                </div>
-                <h4 className='my-3 line-clamp-2'>{item.title}</h4>
-                <div className='flex'>
-                    {Array(item.rating.rate).fill().map((_, i) => (
-                        <TfiStar key={i} className='h-5 text-yellow-500' />
-                    ))}
-                </div>
-                <p className='text-xs my-2 line-clamp-2'>{item.description}</p>
-                <p className='mb-5'>${item.price}</p>
-            </div>
-            <button 
-                className='h-auto w-auto bg-gray-300 p-1 rounded-lg text-sm'
-                onClick={() => handleMoveToCart(item)}
-            >
-                Move to cart
-            </button>
-        </div>
-      ))} 
+    <div className='bg-white'>
+      <h1 className='p-5 text-2xl'>Saved Items</h1><hr/>
+      <div className='save_items_grid'>
+        {items?.map(item => (
+          <div key={item.id} className='card flex flex-col'>
+              <div className='flex-grow overflow-y-auto min-h-[400px]'>
+                  <p className='category-text'>{item.category}</p>
+                  <div className='flex justify-center w-full'>
+                      <Image
+                          src={item.image}
+                          alt="product-image"
+                          width={70}
+                          height={70}
+                          className='cursor-pointer w-auto'
+                      />
+                  </div>
+                  <h4 className='my-3 line-clamp-2'>{item.title}</h4>
+                  <div className='flex'>
+                      {Array(item.rating.rate).fill().map((_, i) => (
+                          <TfiStar key={i} className='h-5 text-yellow-500' />
+                      ))}
+                  </div>
+                  <p className='text-xs my-2 line-clamp-2'>{item.description}</p>
+                  <p className='mb-5'>${item.price}</p>
+              </div>
+              <button 
+                  className='h-auto w-auto bg-gray-300 p-1 rounded-lg text-sm'
+                  onClick={() => handleMoveToCart(item)}
+              >
+                  Move to cart
+              </button>
+          </div>
+        ))} 
+      </div>
     </div>
 )
 }

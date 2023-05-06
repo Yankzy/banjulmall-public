@@ -3,6 +3,7 @@ import userReducer from './userSlice';
 import modalSlice from './modalSlice';
 import cartSlice from './cartSlice';
 import saveItemsSlice from './saveItemsSlice';
+import mobileSlice from './mobileSlice';
 
 
 const store = configureStore({
@@ -11,6 +12,7 @@ const store = configureStore({
     modal: modalSlice,
     cart: cartSlice,
     savedItems: saveItemsSlice,
+    mobile: mobileSlice,
   },
 });
 
