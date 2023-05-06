@@ -21,7 +21,7 @@ const Header = () =>{
     setIsMobile(isMobileDevice);
     dispatch(changeMobileStatus(isMobileDevice));
     dispatch(localCart());
-    // localStorage.removeItem("cart")
+    localStorage.removeItem("cart")
   }, []);
 
   return isMobile ? <MobileHeader /> : <DesktopHeader />
