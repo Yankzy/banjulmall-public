@@ -47,7 +47,7 @@ function SaveItems() {
                   </div>
                   <h4 className='my-3 line-clamp-2'>{item.title}</h4>
                   <div className='flex'>
-                      {Array(item.rating.rate).fill().map((_, i) => (
+                      {Array(item?.rating?.rate).fill().map((_, i) => (
                           <TfiStar key={i} className='h-5 text-yellow-500' />
                       ))}
                   </div>

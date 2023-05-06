@@ -111,7 +111,7 @@ function MobileCart() {
                               ? <FaTrash onClick={()=>dispatch(removeItem(item.id))} /> 
                               : <FaMinus onClick={()=>dispatch(addItem({id:item.id, quantity: item.quantity - 1 }))} />}
                           </button>
-                          <span>{item.quantity}</span>
+                          <span className='flex items-center justify-center w-5 text-[#2d7c8c]'>{item.quantity}</span>
                           <button
                             className='border-2 bg-gray-200 font-bold px-3 py-1 ml-2'
                           >
@@ -120,14 +120,14 @@ function MobileCart() {
                         </div>
                         <div className='items-center justify-center pb-3'>
                           <button 
-                            className="text-[#3c8f9f] text-sm hover:underline"
+                            className="text-[#2d7c8c] text-sm hover:underline"
                             onClick={() => dispatch(removeItem(item.id))}
                           >
                             Delete
                           </button>
                           <span className='mx-2 text-gray-200'>|</span>
                           <button 
-                            className="text-[#3c8f9f] text-sm hover:underline"
+                            className="text-[#2d7c8c] text-sm hover:underline"
                             onClick={() => handleSaveForLater(item)}
                           >
                             Save for later
