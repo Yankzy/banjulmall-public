@@ -1,13 +1,20 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { products } from '../data';
 
-const initialState = {
-  items: [],
-  selected: [],
-};
+
+export const fetchProducts = createAsyncThunk(
+  'products',
+  async () => {
+    return products;
+  }
+);
 
 const cartSlice = createSlice({
   name: 'cart',
-  initialState,
+  initialState: {
+    items: [],
+    loading: false,
+  },
   reducers: {
     addItem: (state, action) => {
       let cart;
@@ -39,8 +46,23 @@ const cartSlice = createSlice({
       cart[itemIndex].saveForLater = action.payload.saveForLater;
       state.items = cart;
       localStorage.setItem('cart', JSON.stringify(cart));
+    },
+
+  },
+  extraReducers: {
+    [fetchProducts.fulfilled]: (state, action) => {
+      state.items = action.payload;
+      state.loading = false;
+    },
+    [fetchProducts.rejected]: (state, action) => {
+      console.log(action.error);
+    },
+    [fetchProducts.pending]: (state, action) => {
+      console.log('pending');
+      state.loading = true;
     }
   },
+
 });
 
 export const { addItem, removeItem, localCart, saveForLater } = cartSlice.actions;

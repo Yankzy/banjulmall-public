@@ -29,7 +29,7 @@ function SaveItems() {
 
   
   return (
-    <div className='bg-white'>
+    <div className='bg-white rounded-md'>
       <h1 className='p-5 text-2xl'>Saved Items</h1><hr/>
       <div className='save_items_grid'>
         {items?.map(item => (

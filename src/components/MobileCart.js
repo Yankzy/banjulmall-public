@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
-import { Form, Formik, Field } from 'formik';
+import { Form, Formik } from 'formik';
 import { addItem, removeItem } from '../redux/cartSlice';
 import styles from '../styles/cart.module.css';
 import SimilarProducts from './SimilarProducts';
@@ -48,12 +48,6 @@ function MobileCart() {
     dispatch(addSavedItem({...item, quantity: 1}));
     dispatch(removeItem(item.id));
   };
-
-  const handleQuantityChange = (item) => {
-    item.quantity === 0 ? dispatch(removeItem(item.id)) : dispatch(addItem(item));
-  };
-
-
 
 
   return (
@@ -105,17 +99,17 @@ function MobileCart() {
                         </div>
                       </div>
                       <div className='flex flex-row items-center'>
-                        <div className='flex flex-row items-center border-2 rounded-md w-auto mb-3 bg-white mr-4'>
+                        <div className='flex flex-row items-center border-2 border-gray-300 bg-gray-300 rounded-md w-auto mb-3 mr-4'>
                           <button
-                            className='border-2 bg-gray-200 font-bold px-2 py-1 mr-2'
+                            className='font-bold px-2 py-1 mr-2'
                           >
                             {item.quantity === 1 
                               ? <FaTrash onClick={()=>dispatch(removeItem(item.id))} /> 
                               : <FaMinus onClick={()=>dispatch(addItem({id:item.id, quantity: item.quantity - 1 }))} />}
                           </button>
-                          <span className='flex items-center justify-center w-5 text-[#2d7c8c]'>{item.quantity}</span>
+                          <span className='flex items-center justify-center w-10 text-[#2d7c8c] bg-white'>{item.quantity}</span>
                           <button
-                            className='border-2 bg-gray-200 font-bold px-3 py-1 ml-2'
+                            className='font-bold px-3 py-1 ml-2'
                           >
                             {<FaPlus onClick={()=>dispatch(addItem({...item, quantity: item.quantity + 1 }))} />}
                           </button>
@@ -162,6 +156,7 @@ function MobileCart() {
         </div>
         
       </div>
+      <SimilarProducts />
     </>
   );
 }

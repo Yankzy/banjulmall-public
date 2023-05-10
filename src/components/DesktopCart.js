@@ -85,15 +85,20 @@ function DesktopCart() {
                               <div className='ml-2 min-h-[90%]'>
                                 <h1 className='text-lg font-medium'>{item.title}</h1>
                                 <p className='text-xs text-green-600 my-3'>In Stock</p>
-                                <Field as="select" name={`quantity.${item.id}`} 
-                                  className="border border-gray-300 rounded-md mr-3 text-xs bg-gray-200 p-1 shadow-md"
-                                  onChange={e => dispatch(addItem({...item, quantity: Number(e.target.value)} ))}
-                                  value={item.quantity}
-                                >
-                                  {Array.from({ length: 10 }, (_, i) => (
-                                    <option key={`${item.id}-${i}`} value={i + 1}> Qty: {i + 1}</option>
-                                  ))}
-                                </Field>
+                                <div className="relative">
+                                    <div id="qtyLabel" className="absolute left-2 py-2 text-xs pt-[0.37rem]">Qty:</div>
+                                    <Field as="select" name={`quantity.${item.id}`} 
+                                      className="border border-gray-300 rounded-md mr-3 text-xs bg-gray-200 p-1 pl-8 shadow-md pt-1"
+                                      onChange={e => dispatch(addItem({...item, quantity: Number(e.target.value)} ))}
+                                      value={item.quantity}
+                                      aria-labelledby="qtyLabel"
+                                    >
+                                      {Array.from({ length: 10 }, (_, i) => (
+                                          <option key={`${item.id}-${i}`} value={i + 1}>{i + 1}</option>
+                                      ))}
+                                    </Field>
+                                </div>
+
                                 
                                 <button 
                                   className="text-[#3c8f9f] text-sm hover:underline"
