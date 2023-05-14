@@ -86,9 +86,9 @@ function DesktopCart() {
                                 <h1 className='text-lg font-medium'>{item.title}</h1>
                                 <p className='text-xs text-green-600 my-3'>In Stock</p>
                                 <div className="relative">
-                                    <div id="qtyLabel" className="absolute left-2 py-2 text-xs pt-[0.37rem]">Qty:</div>
+                                    <div id="qtyLabel" className="absolute text-xs pt-[0.37rem] left-1">Qty:</div>
                                     <Field as="select" name={`quantity.${item.id}`} 
-                                      className="border border-gray-300 rounded-md mr-3 text-xs bg-gray-200 p-1 pl-8 shadow-md pt-1"
+                                      className="border border-gray-300 rounded-md text-xs bg-gray-200 p-1 pl-8 shadow-md"
                                       onChange={e => dispatch(addItem({...item, quantity: Number(e.target.value)} ))}
                                       value={item.quantity}
                                       aria-labelledby="qtyLabel"

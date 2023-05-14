@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { Form, Formik } from 'formik';
 import { addItem, removeItem } from '../redux/cartSlice';
-import styles from '../styles/cart.module.css';
 import SimilarProducts from './SimilarProducts';
 import SaveItems from './SaveItems';
 import { addSavedItem } from '../redux/saveItemsSlice';
