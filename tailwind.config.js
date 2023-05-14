@@ -13,6 +13,11 @@ module.exports = {
           light: "#232F3E",
           DEFAULT: "#131921",
         },
+        bm_teal: {
+          DEFAULT: "#3C8F9F",
+          light: "#75BDC7",
+          dark: "#23666F",
+        },
       },
     },
   },
