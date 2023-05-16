@@ -8,9 +8,9 @@ const TextError = (props) => {
 
 const InputField = ({ label, name, type, placeholder }) => {
   return (
-    <div className="mt-4">
+    <div className="mt-2">
       <label htmlFor={name}>{label}</label>
-      <Field name={name} type={type} placeholder={placeholder} className="flex flex-col w-full p-4 border rounded-md"/>
+      <Field name={name} type={type} placeholder={placeholder} className="flex flex-col w-full p-2 border rounded-md"/>
       <ErrorMessage name={name} component={TextError} />
     </div>
   );

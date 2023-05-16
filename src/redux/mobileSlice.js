@@ -8,7 +8,6 @@ const mobileSlice = createSlice({
   },
   reducers: {
     changeMobileStatus: (state, action) => {
-      console.log(action.payload);
       state.isMobile = action.payload;
     }
   },

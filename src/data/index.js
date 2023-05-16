@@ -39,7 +39,7 @@ export const products = [
         "id": 4,
         "title": "Mens Casual Slim Fit",
         "price": 15.99,
-        "description": "The color could be slightly different between on the screen and in practice. / Please note that body builds vary by person, therefore, detailed size information should be reviewed below on the product description.",
+        "description": "The color could be slightly different between on the screen and in practice. / Please note that body builds vary by person, therefore, detailed size fullNamermation should be reviewed below on the product description.",
         "category": "men's clothing",
         "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
         "rating": {
@@ -79,7 +79,7 @@ export const products = [
         "category": "jewelery",
         "image": "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg",
         "rating": {
-            "rate": 3,           
+            "rate": 3,
             "count": 400
         }
     },
@@ -239,5 +239,81 @@ export const products = [
             "count": 145
         }
     }
-]
+];
+
+const keywords = [
+    'online shopping',
+    'buy products online',
+    'discount electronics',
+    'cheap electronics online',
+    'buy books online',
+    'best online bookstore',
+    'buy clothes online',
+    'online fashion store',
+    'home appliances online',
+    'online grocery shopping',
+    'buy mobile phones online',
+    'online jewellery store',
+    'buy sports equipment online',
+    'buy kitchen appliances online',
+    'online toy store',
+    'video games online store',
+    'buy furniture online',
+    'online home decor',
+    'beauty products online',
+    'online makeup store',
+    'best deals online',
+    'discounted products online',
+    'online shopping offers',
+    'online shopping deals',
+    'online sales',
+    'fast shipping',
+    'secure online shopping',
+    'online customer service',
+    'ecommerce website',
+    'large product selection',
+    'best prices online',
+    'online marketplace',
+    'trusted online shop',
+    'buy gifts online',
+    'online gift shop'
+];
+
+export const checkoutData = [
+    {
+        id: 1,
+        title: 'Delivery Address',
+        fullName: 'Yankuba Kuyateh',
+        address1: 'No. 20, Presidential Highway',
+        address2: 'Kanifing Municipality',
+        city: 'Kanifing',
+        region: 'Kanifing',
+        country: 'The Gambia',
+    },
+    {
+      id: 2,
+      title: 'How do I change my My Page password?',
+      fullName:
+        'Coloring book forage photo booth gentrify lumbersexual. Migas chillwave poutine synth shoreditch, enamel pin thundercats fashion axe roof party polaroid chartreuse.',
+    },
+    {
+      id: 3,
+      title: 'What is BankID?',
+      fullName:
+        'Enamel pin fam sustainable woke whatever venmo. Authentic asymmetrical put a bird on it, lumbersexual activated charcoal kfullNamelk banjo cred pickled sartorial.',
+    },
+    {
+      id: 4,
+      title: 'Whose birth number can I use?',
+      fullName:
+        'Edison bulb direct trade gentrify beard lo-fi seitan sustainable roof party franzen occupy squid. Knausgaard cronut succulents, scenester readymade shabby chic lyft. Copper mug meh vegan gentrify.',
+    },
+    {
+      id: 5,
+      title: 'When do I recieve a password ordered by letter?',
+      fullName:
+        'Locavore franzen fashion axe live-edge neutra irony synth af tilde shabby chic man braid chillwave waistcoat copper mug messenger bag. Banjo snackwave blog, microdosing thundercats migas vaporware viral lo-fi seitan ',
+    },
+  ]
+  
 

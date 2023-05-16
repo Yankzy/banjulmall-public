@@ -8,6 +8,7 @@ const modalSlice = createSlice({
     leftSidebarIsVisible: false,
     rightSidebarIsVisible: false,
     overlayIsVisible: false,
+    addressModalIsVisible: false,
   },
   reducers: {
     toggleLeftSidebar: (state) => {
@@ -19,10 +20,14 @@ const modalSlice = createSlice({
     toggleOverlay: (state) => {
       state.leftSidebarIsVisible = false;
       state.rightSidebarIsVisible = false;
+      state.addressModalIsVisible = false;
     },
+    toggleAddressModal: (state) => {
+      state.addressModalIsVisible = !state.addressModalIsVisible;
+    }
   },
 });
 
-export const { toggleLeftSidebar, toggleRightSidebar, toggleOverlay } = modalSlice.actions;
+export const { toggleLeftSidebar, toggleRightSidebar, toggleOverlay, toggleAddressModal } = modalSlice.actions;
 
 export default modalSlice.reducer;

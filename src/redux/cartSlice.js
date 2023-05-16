@@ -49,19 +49,6 @@ const cartSlice = createSlice({
     },
 
   },
-  extraReducers: {
-    [fetchProducts.fulfilled]: (state, action) => {
-      state.items = action.payload;
-      state.loading = false;
-    },
-    [fetchProducts.rejected]: (state, action) => {
-      console.log(action.error);
-    },
-    [fetchProducts.pending]: (state, action) => {
-      console.log('pending');
-      state.loading = true;
-    }
-  },
 
 });
 

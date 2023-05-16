@@ -4,6 +4,8 @@ import { useRouter } from 'next/router';
 import { TfiLocationPin, TfiAlignJustify, TfiSearch } from "react-icons/tfi";
 import OverlayComponents from './OverlayComponents';
 import { RiShoppingBasketLine } from "react-icons/ri";
+import LeftSidebar from './LeftSidebar';
+import RightSidebar from './RightSidebar';
 
 const DesktopHeader = () => {
 
@@ -93,7 +95,8 @@ const DesktopHeader = () => {
                     ))}
                 </div>
             </header>
-            {(leftSidebarIsVisible || rightSidebarIsVisible ) && <OverlayComponents />}
+            {leftSidebarIsVisible && <OverlayComponents ComponentToRender={LeftSidebar} visible={leftSidebarIsVisible} position="left" />}
+            {rightSidebarIsVisible && <OverlayComponents ComponentToRender={RightSidebar} visible={rightSidebarIsVisible} position="right" />}
             
 
         </>
