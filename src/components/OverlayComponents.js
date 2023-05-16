@@ -5,40 +5,35 @@ import RightSidebar from './RightSidebar';
 
 
 
-const OverlayComponents = () => {
-    const { 
-        leftSidebarIsVisible, 
-        rightSidebarIsVisible, 
-    } = useSelector(({modal}) => modal);
-    
+const OverlayComponents = ({ ComponentToRender, visible, position }) => {
     const dispatch = useDispatch();
+
+    let positionClasses = '';
+    let transitionClasses = '';
+
+    if (position === 'left') {
+        positionClasses = 'left-0';
+        transitionClasses = visible ? 'translate-x-0' : '-translate-x-full';
+    } else if (position === 'right') {
+        positionClasses = 'right-0'; 
+        transitionClasses = visible ? 'translate-x-0' : 'translate-x-full';
+    } else if (position === 'middle') {
+        positionClasses = 'left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2';
+    }
       
-  
     return (
-    <div className='fixed top-0 left-0 w-full h-full bg-black bg-opacity-70 z-40 ' onClick={()=> dispatch(toggleOverlay()) }>
-        {leftSidebarIsVisible && (
-            <div
-                className={`fixed top-0 left-0 h-full w-64 bg-gray-100 z-50 
-                transform transition-transform duration-500 ease-in-out 
-                ${leftSidebarIsVisible ? 'translate-x-0' : '-translate-x-full'}`}
-                onClick={(e)=> e.stopPropagation()}
-            >
-                <LeftSidebar />
-            </div>
-        )}
-
-        {rightSidebarIsVisible && (
-            <div
-                className={`fixed top-0 right-0 h-full w-64 bg-gray-100 z-50
-                transform transition-transform duration-500 ease-in-out
-                ${rightSidebarIsVisible ? 'translate-x-0' : 'translate-x-full'}`}
-                onClick={(e)=> e.stopPropagation()}
-            >
-                <RightSidebar />
-            </div>
-        )}
-
-    </div>
+        <div className='fixed top-0 left-0 w-full h-full bg-black bg-opacity-70 z-40 ' onClick={()=> dispatch(toggleOverlay()) }>
+            {visible && (
+                <div
+                    onClick={(e)=> e.stopPropagation()}
+                    className={`fixed ${positionClasses} h-auto w-auto bg-gray-100 z-50 rounded-xlg
+                    transition-transform duration-500 ease-in-out 
+                    ${transitionClasses}`}
+                >
+                    <ComponentToRender />
+                </div>
+            )}
+        </div>
     );
 };
   
