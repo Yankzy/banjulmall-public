@@ -52,5 +52,12 @@ const cartSlice = createSlice({
 
 });
 
+
+export const cartTotal = items => items.reduce((acc, item) => {
+  acc.totalPrice += item.price * item.quantity;
+  acc.totalQty += item.quantity;
+  return acc;
+},{ totalPrice: 0, totalQty: 0 });
+
 export const { addItem, removeItem, localCart, saveForLater } = cartSlice.actions;
 export default cartSlice.reducer;

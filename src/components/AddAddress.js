@@ -1,13 +1,13 @@
 import React from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import InputField from '../components/Fields';
+import {InputField} from '../components/Fields';
 import Head from 'next/head';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLoading, updateAddress } from '../redux/userSlice';
 import { useRouter } from 'next/router';
 import { FaTimes } from 'react-icons/fa';
-import { toggleAddressModal } from '../redux/modalSlice';
+import { toggleModal } from '../redux/modalSlice';
 import { ulid } from 'ulid'
 
 
@@ -34,7 +34,7 @@ const AddAddress = ({ title, }) => {
     dispatch(updateAddress(values));
     actions.resetForm();
     dispatch(setLoading(false));
-    dispatch(toggleAddressModal());
+    dispatch(toggleModal('addressModal'));
 
   };
 
@@ -43,7 +43,7 @@ const AddAddress = ({ title, }) => {
     <div className="flex flex-col items-center justify-center w-full md:w-[35rem] rounded-xl">
         <div className='flex flex-1 items-center justify-between bg-[#F0F2F2] text-md font-bold border-b-2 border-gray-200 w-full p-4'>
             <h1>Update your shipping address</h1>
-            <FaTimes onClick={()=> dispatch(toggleAddressModal())} className=' cursor-pointer'/>
+            <FaTimes onClick={()=> dispatch(toggleModal('addressModal'))} className=' cursor-pointer'/>
         </div>
         <Formik 
             initialValues={initialValues} 

@@ -1,12 +1,14 @@
 import React from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import InputField from '../components/Fields';
+import {InputField} from '../components/Fields';
 import Head from 'next/head';
 import { signUp, updateInfo } from '../../firebase/Config';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLoading } from '../redux/userSlice';
 import { useRouter } from 'next/router';
+import useFirestore from '../hooks/useFirestore';
+import axios, {isCancel, AxiosError} from 'axios';
 
 const Signup = () => {
     const initialValues = {
@@ -26,14 +28,28 @@ const Signup = () => {
     const dispatch = useDispatch();
     const loading = useSelector(({user}) => user.loading);
     const router = useRouter();
+    const { updateProfile } = useFirestore(null);
 
     const onSubmit = async(values, actions) => {
         dispatch(setLoading(true));
         const { fullName, email, password } = values;
         actions.resetForm();
         await signUp(email, password)
-        .then((res) => {
+        .then(async(userCredential) => {
+            const {uid} = userCredential.user;
             updateInfo(fullName);
+
+            // create stripe customer
+            await axios.post('/api/stripe-assets/customer', { fullName, email, operation: 'create' })
+            .then(({ data }) =>{
+                updateProfile({fullName, email, stripe_id: data}, uid); // update firestore user profile
+            })
+            .catch((error) =>{
+                console.log(error);
+            });
+
+            router.push('/'); // redirect to home page
+            
         }).catch((err) => {
             console.log(err);
         })

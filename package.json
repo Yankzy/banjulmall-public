@@ -7,11 +7,19 @@
     "start": "next start"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.14",
     "@reduxjs/toolkit": "1.9.5",
+    "@stripe/react-stripe-js": "^2.1.0",
+    "@stripe/stripe-js": "^1.53.0",
     "@tailwindcss/line-clamp": "^0.4.4",
+    "apollo-server-core": "^3.12.0",
+    "apollo-server-micro": "^3.12.0",
+    "axios": "^1.4.0",
     "firebase": "^9.21.0",
     "formik": "^2.2.9",
     "framer-motion": "^10.12.10",
+    "graphql": "^16.6.0",
+    "micro": "^10.0.1",
     "next": "13.3.1",
     "next-auth": "^4.22.1",
     "next-images": "^1.8.5",
@@ -21,6 +29,7 @@
     "react-icons": "^4.8.0",
     "react-redux": "8.0.5",
     "react-responsive-carousel": "^3.2.23",
+    "stripe": "^12.5.0",
     "ua-parser-js": "^1.0.35",
     "ulid": "^2.3.0",
     "yup": "^1.1.1"
@@ -30,6 +39,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.23",
-    "tailwindcss": "^3.3.2"
+    "tailwindcss": "^3.3.2",
+    "typescript": "5.0.4"
   }
 }

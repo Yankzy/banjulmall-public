@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleLeftSidebar, toggleRightSidebar } from '../redux/modalSlice';
+import { toggleModal } from '../redux/modalSlice';
 import { TfiLocationPin, TfiAlignJustify, TfiSearch, TfiUser, TfiAngleRight } from "react-icons/tfi";
 import { useRouter } from 'next/router';
 import OverlayComponents from './OverlayComponents';
@@ -9,7 +9,7 @@ const MobileHeader = () => {
     
     const router = useRouter();
     const menuB = ['Deals', 'Buy Again', 'Become A Seller', 'Customer Service', 'BM Business', 'Browse History']
-    const { leftSidebarIsVisible, rightSidebarIsVisible } = useSelector(({modal}) => modal);
+    const { leftSidebarModal, rightSidebarModal } = useSelector(({modal}) => modal);
     const currentUser = useSelector(({user}) => user.currentUser);
     const items = useSelector(({cart}) => cart.items);
     const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const MobileHeader = () => {
     
     const LoginOrRightSidebarToggle = () => {
         if (currentUser) {
-            dispatch(toggleRightSidebar());
+            dispatch(toggleModal('rightSidebarModal'));
         } else {
             router.push('/login');
         }
@@ -37,7 +37,7 @@ const MobileHeader = () => {
                     {/* Left */}
                     <div className='flex'>
                         <div className='flex items-center justify-center h-8 mx-3 gap-2'>
-                            <TfiAlignJustify size={20} className='h-full mx-3' onClick={()=> dispatch(toggleLeftSidebar()) }/>
+                            <TfiAlignJustify size={20} className='h-full mx-3' onClick={()=> dispatch(toggleModal('leftSidebarModal')) }/>
                             <p 
                                 onClick={()=> router.push('/') }
                                 className='text-2xl font-extrabold cursor-pointer'>
@@ -80,7 +80,7 @@ const MobileHeader = () => {
                     <p className='ml-0'>{`Delivery to Anywhere`}</p>
                 </div>
             </header>
-            {(leftSidebarIsVisible || rightSidebarIsVisible ) && <OverlayComponents />}
+            {(leftSidebarModal || rightSidebarModal ) && <OverlayComponents />}
         </>
     )
 }

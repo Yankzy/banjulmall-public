@@ -9,7 +9,7 @@ const MyApp = ({ Component, pageProps }) => {
   return (
     <Provider store={store}>
       <FirebaseProvider>
-      <NextNProgress color="#5dff00" startPosition={0.3} height={3} showOnShallow={true} />
+        <NextNProgress color="#75BDC7" startPosition={0.3} height={3} showOnShallow={true} />
         <Component {...pageProps} />
       </FirebaseProvider>
     </Provider>

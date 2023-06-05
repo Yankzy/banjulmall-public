@@ -32,7 +32,7 @@ const SimilarProducts = () => {
                     <p className='text-sm px-2 top-0 text-[#3c8f9f]'>${item.price}</p>
                     
                     <button 
-                        className='h-auto w-auto bg-gray-300 p-1 rounded-lg text-sm'
+                        className='h-auto w-auto bg-gray-200 py-1 px-2 rounded-md text-sm shadow-md border-gray-300'
                         onClick={() => dispatch(addItem({...item, quantity: 1}))}
                     >
                         Add to cart

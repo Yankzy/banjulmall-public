@@ -1,33 +1,25 @@
-
 import { createSlice } from '@reduxjs/toolkit';
-
 
 const modalSlice = createSlice({
   name: 'sidebar',
   initialState: { 
-    leftSidebarIsVisible: false,
-    rightSidebarIsVisible: false,
+    leftSidebarModal: false,
+    rightSidebarModal: false,
     overlayIsVisible: false,
-    addressModalIsVisible: false,
+    addressModal: false,
+    addCardModal: false,
   },
   reducers: {
-    toggleLeftSidebar: (state) => {
-      state.leftSidebarIsVisible = !state.leftSidebarIsVisible;
-    },
-    toggleRightSidebar: (state) => {
-      state.rightSidebarIsVisible = !state.rightSidebarIsVisible;
+    toggleModal: (state, action) => {
+      const modalName = action.payload;
+      state[modalName] = !state[modalName];
     },
     toggleOverlay: (state) => {
-      state.leftSidebarIsVisible = false;
-      state.rightSidebarIsVisible = false;
-      state.addressModalIsVisible = false;
+      Object.keys(state).forEach(key => state[key] = false);
     },
-    toggleAddressModal: (state) => {
-      state.addressModalIsVisible = !state.addressModalIsVisible;
-    }
   },
 });
 
-export const { toggleLeftSidebar, toggleRightSidebar, toggleOverlay, toggleAddressModal } = modalSlice.actions;
+export const { toggleModal, toggleOverlay } = modalSlice.actions;
 
 export default modalSlice.reducer;

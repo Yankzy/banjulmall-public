@@ -20,6 +20,7 @@ import { createContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoading, setUser } from "../src/redux/userSlice";
 import { getMessaging } from "firebase/messaging";
+import { getFirestore } from "firebase/firestore";
 
 
 
@@ -35,6 +36,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig)
 export const storage = getStorage(app);
+export const db = getFirestore();
 // export const messaging = getMessaging(app);
 
 export let auth;

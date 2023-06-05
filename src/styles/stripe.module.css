@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
+.stripeform .button {
+  background-color: #635BFF;
+  border-radius: 3px;
+  color: white;
+  border: 0;
+  padding: 12px 16px;
+  margin-top: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: block;
+}
+
+.stripeform .button:hover {
+  filter: contrast(115%);
+}
+
+.stripeform .button:active {
+  transform: translateY(0px) scale(0.98);
+  filter: brightness(0.9);
+}
+
+.stripeform .button:disabled {
+  opacity: 0.5;
+  cursor: none;
+}
+
+.stripeform input, .stripeform select {
+  display: block;
+  font-size: 1.1em;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.stripeform label {
+  display: block;
+}
+
+.stripeform a {
+  color: #635BFF;
+  font-weight: 900;
+}
+
+.stripeform small {
+  font-size: .6em;
+}
+
+.stripeform fieldset, .stripeform input, .stripeform select {
+  border: 1px solid #efefef;
+}
+
+.stripeform #payment-form {
+  border: #F6F9FC solid 1px;
+  border-radius: var(--radius);
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 30px 50px -20px rgb(50 50 93 / 25%), 0 30px 60px -30px rgb(0 0 0 / 30%);
+}
+
+.stripeform #messages {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+  display: none; /* hide initially, then show once the first message arrives */
+  background-color: #0A253C;
+  color: #00D924;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: var(--radius);
+  font-size:0.7em;
+}

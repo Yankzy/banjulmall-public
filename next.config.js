@@ -4,4 +4,7 @@ module.exports = {
 	images: {
 	  domains: ['fakestoreapi.com'],
 	},
+	devIndicators: {
+        buildActivity: false
+    },
   }

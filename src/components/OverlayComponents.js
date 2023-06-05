@@ -1,7 +1,5 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { toggleOverlay } from '../redux/modalSlice';
-import LeftSidebar from './LeftSidebar';
-import RightSidebar from './RightSidebar';
 
 
 

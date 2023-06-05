@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import InputField from '../components/Fields';
+import {InputField} from '../components/Fields';
 import Head from 'next/head';
 import { login } from '../../firebase/Config';
 import { useDispatch, useSelector } from 'react-redux';

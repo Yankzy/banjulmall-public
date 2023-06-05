@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleLeftSidebar, toggleRightSidebar } from '../redux/modalSlice';
+import { toggleModal } from '../redux/modalSlice';
 import { useRouter } from 'next/router';
 import { TfiLocationPin, TfiAlignJustify, TfiSearch } from "react-icons/tfi";
 import OverlayComponents from './OverlayComponents';
@@ -11,7 +11,7 @@ const DesktopHeader = () => {
 
     const router = useRouter();
     const menuB = ['Deals', 'Buy Again', 'Become A Seller', 'Customer Service', 'BM Business', 'Browse History']
-    const { leftSidebarIsVisible, rightSidebarIsVisible } = useSelector(({modal}) => modal);
+    const { leftSidebarModal, rightSidebarModal } = useSelector(({modal}) => modal);
     const currentUser = useSelector(({user}) => user.currentUser);
     const items = useSelector(({cart}) => cart.items);
     const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const DesktopHeader = () => {
     
     const LoginOrRightSidebarToggle = () => {
         if (currentUser) {
-            dispatch(toggleRightSidebar());
+            dispatch(toggleModal('rightSidebarModal'));
         } else {
             router.push('/login');
         }
@@ -86,7 +86,7 @@ const DesktopHeader = () => {
                 </div>
                 {/* Bottom nav */}
                 <div className='flex items-center bg-amazon_blue-light text-white text-sm space-x-3 py-2 pl-6'>
-                    <p className='menu-b whitespace-nowrap flex items-center cursor-pointer' onClick={()=> dispatch(toggleLeftSidebar()) }>
+                    <p className='menu-b whitespace-nowrap flex items-center cursor-pointer' onClick={()=> dispatch(toggleModal('leftSidebarModal')) }>
                         <TfiAlignJustify size={20} className='h-6 mr-1' />
                         All
                     </p>
@@ -95,8 +95,8 @@ const DesktopHeader = () => {
                     ))}
                 </div>
             </header>
-            {leftSidebarIsVisible && <OverlayComponents ComponentToRender={LeftSidebar} visible={leftSidebarIsVisible} position="left" />}
-            {rightSidebarIsVisible && <OverlayComponents ComponentToRender={RightSidebar} visible={rightSidebarIsVisible} position="right" />}
+            {leftSidebarModal && <OverlayComponents ComponentToRender={LeftSidebar} visible={leftSidebarModal} position="left" />}
+            {rightSidebarModal && <OverlayComponents ComponentToRender={RightSidebar} visible={rightSidebarModal} position="right" />}
             
 
         </>

@@ -13,7 +13,6 @@ function SaveItems() {
   const { slug } = router.query;
   const items = useSelector(({savedItems}) => savedItems.items);
   const dispatch = useDispatch();
-  console.log(items.length);
   
   useEffect(() => {
     dispatch(localSaveItems());
@@ -32,7 +31,7 @@ function SaveItems() {
     <div className='bg-white rounded-md'>
       <h1 className='p-5 text-2xl'>Saved Items</h1><hr/>
       <div className='save_items_grid'>
-        {items?.map(item => (
+        {items.length > 0 ? (items?.map(item => (
           <div key={item.id} className='card flex flex-col'>
               <div className='flex-grow overflow-y-auto min-h-[400px]'>
                   <p className='category-text'>{item.category}</p>
@@ -61,7 +60,12 @@ function SaveItems() {
                   Move to cart
               </button>
           </div>
-        ))} 
+        )))
+        : (
+          <div className='flex flex-col items-center justify-center p-0'>
+            <p className='text-2xl p-5'>No saved items</p>
+          </div>
+        )}
       </div>
     </div>
 )

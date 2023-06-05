@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { Form, Formik, Field } from 'formik';
-import { addItem, removeItem } from '../redux/cartSlice';
+import { addItem, removeItem, cartTotal } from '../redux/cartSlice';
 import styles from '../styles/cart.module.css';
 import SimilarProducts from './SimilarProducts';
 import SaveItems from './SaveItems';
@@ -18,7 +18,7 @@ function DesktopCart() {
 
   const items = useSelector(({cart}) => cart.items);
   const dispatch = useDispatch();
-
+  const cartTotals = useSelector(({cart}) => cartTotal(cart.items));
 
   const onSubmit = async (values, actions) => {
     // Handle form submission logic here
@@ -34,14 +34,6 @@ function DesktopCart() {
     return acc;
   }, {});
 
-  // cartTotals = { totalPrice, totalQty } using reduce on items
-  const cartTotals = items?.reduce((acc, item) => {
-      acc.totalPrice += item.price * item.quantity;
-      acc.totalQty += item.quantity;
-      return acc;
-    },
-    { totalPrice: 0, totalQty: 0 }
-  );
 
   const handleSaveForLater = (item) => {
     dispatch(addSavedItem({...item, quantity: 1}));
@@ -155,8 +147,9 @@ function DesktopCart() {
                 <p className='text-xl font-bold ml-3'>{`$${(cartTotals['totalPrice']).toFixed(2)}`}</p>
               </div>
               <button 
-                className={`bg-${cartTotals['totalQty'] === 0 ? 'gray-400' : 'yellow-500'} text-white font-semibold px-6 py-2 rounded-md bg-gr`}
+                className={`bg-${cartTotals['totalQty'] === 0 ? 'gray-400' : 'yellow-500'} text-white font-semibold px-6 py-2 rounded-md shadow-md`}
                 disabled={cartTotals['totalQty'] === 0}
+                onClick={() => router.push('/checkout')}
               >
                 Continue to checkout
               </button>
